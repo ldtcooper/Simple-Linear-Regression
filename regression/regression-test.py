@@ -1,6 +1,6 @@
 import unittest
 import importlib
-regress = importlib.import_module('regression').regress
+from .regression import regress
 
 class TestRegress(unittest.TestCase):
     def test_regress(self):
@@ -13,4 +13,5 @@ class TestRegress(unittest.TestCase):
         self.assertAlmostEqual(expected_result['intercept'], actual_result['intercept'], 4)
 
 if __name__ == '__main__':
+    print('Unit Testing Regression Equation')
     unittest.main()
