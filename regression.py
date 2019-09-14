@@ -1,8 +1,9 @@
 def sum_squared(variable_list):
-    """Takes in an array and returns an array with each element squared"""
-    return [ el * el for el in variable_list]
+    """Takes in an array and returns the sum of an array with each element squared"""
+    return sum([ el * el for el in variable_list])
 
-def reg_intercept(sum_dependent, sum_dependent_squared, sum_ind_times_dep, n):
+def reg_intercept(sum_independent, sum_dependent, sum_dependent_squared, sum_ind_times_dep, n):
+    """Calculates the intercept of the regression line"""
     return (
         (
             (sum_independent * sum_dependent_squared) - (sum_dependent * sum_ind_times_dep)
@@ -12,11 +13,13 @@ def reg_intercept(sum_dependent, sum_dependent_squared, sum_ind_times_dep, n):
     )
 
 def reg_slope(sum_ind_times_dep, sum_independent, sum_dependent, sum_dependent_squared, n):
+    """Calculates the slope of the regression line"""
+    print(sum_dependent_squared)
     return (
         (
             (n * sum_ind_times_dep) - (sum_independent * sum_dependent)
         ) / (
-            (n* sum_dependent_squared) - (sum_dependent * sum_dependent)
+            (n * sum_dependent_squared) - (sum_dependent * sum_dependent)
         )
     )
 
@@ -41,5 +44,5 @@ def regress(dependent_var, independent_var):
     sum_ind_times_dep = sum(independent_times_dependent)
     n = len(dependent_var)
     slope = reg_slope(sum_ind_times_dep, sum_independent, sum_dependent, sum_dependent_squared, n)
-    intercept = reg_intercept(sum_dependent, sum_dependent_squared, sum_ind_times_dep, n)
+    intercept = reg_intercept(sum_independent, sum_dependent, sum_dependent_squared, sum_ind_times_dep, n)
     return { 'slope': slope, 'intercept': intercept}
