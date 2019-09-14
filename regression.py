@@ -23,7 +23,7 @@ def reg_slope(sum_ind_times_dep, sum_independent, sum_dependent, sum_dependent_s
 def regress(dependent_var, independent_var):
     """
     Takes in two arrays of values and returns a slope
-    and intercept for the line of best fit
+    and intercept for the line of best fit in dict form
     """
     sum_dependent = sum(dependent_var)
     sum_independent = sum(independent_var)
@@ -40,3 +40,6 @@ def regress(dependent_var, independent_var):
 
     sum_ind_times_dep = sum(independent_times_dependent)
     n = len(dependent_var)
+    slope = reg_slope(sum_ind_times_dep, sum_independent, sum_dependent, sum_dependent_squared, n)
+    intercept = reg_intercept(sum_dependent, sum_dependent_squared, sum_ind_times_dep, n)
+    return { 'slope': slope, 'intercept': intercept}
