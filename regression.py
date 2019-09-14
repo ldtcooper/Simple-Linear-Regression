@@ -27,6 +27,9 @@ def regress(dependent_var, independent_var):
     Takes in two arrays of values and returns a slope
     and intercept for the line of best fit in dict form
     """
+    if len(dependent_var) != len(independent_var):
+        return
+
     sum_dependent = sum(dependent_var)
     sum_independent = sum(independent_var)
 
