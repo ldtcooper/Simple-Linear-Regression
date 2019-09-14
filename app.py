@@ -1,8 +1,5 @@
-from flask import Flask
-from flask import request
-from flask import abort
-import regression
-import importlib
+from flask import Flask, request, abort
+from regression import regress
 
 app = Flask(__name__)
 
@@ -11,7 +8,7 @@ def hello():
     return "Hello, World!"
 
 @app.route("/regress", methods = ['POST'])
-def regression():
+def send_regression():
     arguments = request.get_json()
     dependent_var = arguments['dep']
     independent_var = arguments['ind']
@@ -23,6 +20,7 @@ def regression():
             regression_results = regress(dependent_var, independent_var)
             return regression_results
         except Exception as e:
+            print(e)
             return abort(400, 'INVALID_INPUT')
 
 if __name__ == "__main__":
