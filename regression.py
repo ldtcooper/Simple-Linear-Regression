@@ -14,7 +14,6 @@ def reg_intercept(sum_independent, sum_dependent, sum_dependent_squared, sum_ind
 
 def reg_slope(sum_ind_times_dep, sum_independent, sum_dependent, sum_dependent_squared, n):
     """Calculates the slope of the regression line"""
-    print(sum_dependent_squared)
     return (
         (
             (n * sum_ind_times_dep) - (sum_independent * sum_dependent)
