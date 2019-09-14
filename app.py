@@ -17,10 +17,13 @@ def regression():
     independent_var = arguments['ind']
     different_data_lengths = len(dependent_var) != len(independent_var)
     if different_data_lengths:
-        abort(400, description = 'DIFFERENT LENGTH DATA')
+        abort(400, description = 'DIFFERENT_LENGTH')
     else:
-        regression_results = regress(dependent_var, independent_var)
-        return regression_results
+        try:
+            regression_results = regress(dependent_var, independent_var)
+            return regression_results
+        except Exception as e:
+            abort(400, 'INVALID_INPUT')
 
 if __name__ == "__main__":
   app.run()
