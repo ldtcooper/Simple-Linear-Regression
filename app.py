@@ -24,4 +24,4 @@ def send_regression():
             return abort(400, 'INVALID_INPUT')
 
 if __name__ == "__main__":
-  app.run()
+    app.run()
