@@ -49,6 +49,21 @@ const handleFileUpload = (e) => {
     };
 };
 
+const handleDataSubmission = (e) => {
+    if (!state.requestBody) {
+        setError('Plese upload a file');
+    } else {
+        fetch('/regress', {
+            method: 'POST',
+            body: JSON.stringify(state.requestBody),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    }
+};
+
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('file-upload').onchange = handleFileUpload;
+    document.getElementById('submit-btn').onclick = handleDataSubmission;
 });
