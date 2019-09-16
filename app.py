@@ -1,11 +1,11 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, url_for
 from regression import regress
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path = '')
 
-@app.route("/")
+@app.route("/", methods = ['GET'])
 def hello():
-    return "Hello, World!"
+    return app.send_static_file('index.html')
 
 @app.route("/regress", methods = ['POST'])
 def send_regression():
