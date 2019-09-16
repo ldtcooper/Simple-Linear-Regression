@@ -4,7 +4,7 @@ from regression import regress
 app = Flask(__name__, static_url_path = '')
 
 @app.route("/", methods = ['GET'])
-def hello():
+def homepage():
     return app.send_static_file('index.html')
 
 @app.route("/regress", methods = ['POST'])
