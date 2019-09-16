@@ -7,7 +7,19 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <h1>Linear Regression API</h1>
-        <p>This is an API that will perform a linear regression on data which you import into it.</p>
+        <main>
+            <section>
+                <h1>Linear Regression API</h1>
+                <p>This is an API that will perform a linear regression on data which you import into below. You can upload data in .csv or .tsv format. Your data should only have two rows, one for the dependent variable (on the top row) and another for your independent variable (on the bottom row). See below for an example</p>
+                <code>
+                    age,43,21,25,42,57,59<br/>
+                    glucose,99,65,79,75,87,81
+                </code>
+            </section>
+            <div class="upload">
+                <label for="#file-upload">Upload your file here:</label>
+                <input id="file-upload" type="file" name="CSV Upload" accept=".csv, .tsv" value="">
+            </div>
+        </main>
     </body>
 </html>
