@@ -1,4 +1,4 @@
-from flask import Flask, request, abort, url_for
+from flask import Flask, request, abort, url_for, redirect
 from regression import regress
 
 app = Flask(__name__, static_url_path = '')
