@@ -1,0 +1,7 @@
+[class$="--invisible"] {
+    display: none;
+}
+
+.upload__error {
+    color: red;
+}

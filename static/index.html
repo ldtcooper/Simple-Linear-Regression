@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Regression API</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <link rel="stylesheet" href="./styles.css">
+        <script type="text/javascript" src="./index.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+    <body>
+        <main>
+            <header>
+                <h1>Linear Regression API</h1>
+            </header>
+            <section>
+                <h2>What is this?</h2>
+                <p>
+                    This is an API that will perform a linear regression on data which you can import below.
+                </p>
+            </section>
+            <section>
+                <h2>How do I use it?</h2>
+                <p>
+                    You can upload data in .csv or .tsv format. Your data should only have two rows, one for the dependent variable (on the top row) and another for your independent variable (on the bottom row). Any other rows will be ignored. Additionally, all of the values save those in the first column (the series names) should be numerical, and there should be the same number of values in each row.
+                <p>
+                <code>
+                    age,43,21,25,42,57,59
+                    <br/>
+                    glucose,99,65,79,75,87,81
+                </code>
+                <p>
+                    Uploading the above data will tell you the correlation between age and glucose levels absent any other factors.
+                </p>
+            </section>
+            <div class="upload">
+                <p id="error" class="upload__error--invisible"></p>
+                <p id="success" class="upload__success--invisible"></p>
+                <div class="upload__input">
+                    <label for="#file-upload">Upload your file here:</label>
+                    <input id="file-upload" type="file" name="CSV Upload" accept=".csv, .tsv">
+                    <button id="submit-btn" type="button" name="upload" disabled>
+                        Upload Data
+                    </button>
+                </div>
+            </div>
+            <div class="results">
+                <dl id="values" class="results__regression-values--invisible">
+                    <div class="results__dl-element-wrapper">
+                        <dt>Regression Coefficient:</dt>
+                        <dd id="coefficient"></dd>
+                    </div>
+                    <div class="results__dl-element-wrapper">
+                        <dt>Regression Constant:</dt>
+                        <dd id="constant"></dd>
+                    </div>
+                </dl>
+            </div>
+        </main>
+    </body>
+</html>
