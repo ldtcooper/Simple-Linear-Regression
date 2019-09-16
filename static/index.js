@@ -9,6 +9,11 @@ const setMessage = (id, newClass, msg) => {
 const setError = (msg) => setMessage('error', 'upload__error', msg);
 const removeError = (msg) => setMessage('error', 'upload__error--invisible', msg);
 const setSuccess = (msg) => setMessage('success', 'upload__success', 'Data uploaded successfully!');
+const setValues = ({ slope, intercept }) => {
+    document.getElementById('coefficient').textContent = slope;
+    document.getElementById('constant').textContent = intercept;
+    document.getElementById('values').className = 'results__regression-values';
+};
 
 const handleFileUpload = (e) => {
     removeError();
@@ -36,11 +41,14 @@ const handleFileUpload = (e) => {
                         if (isNaN(el)) {
                             const numberError = 'All non-title data points must be numbers';
                             setError(numberError);
+                            document.getElementById('file-upload').value = '';
                             throw new Error(numberError);
                         }
 
                         return el;
                     });
+
+                    return allNumbers;
                 };
 
                 // package data for API
@@ -86,6 +94,7 @@ const handleDataSubmission = (e) => {
             if (r.ok) {
                 r.json().then((json) => {
                     state.regressionLine = json;
+                    setValues(json);
                 });
             } else if (r.status === 400) {
                 setError('It appears that you have uploaded some invalid data. Please double-check your data and try again');
