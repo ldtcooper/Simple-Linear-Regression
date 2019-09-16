@@ -1,12 +1,17 @@
 const state = {};
 
-const setError = (errorMsg) => {
-    const errorTag = document.getElementById('error');
-    errorTag.className = 'upload__error';
-    errorTag.textContent = errorMsg;
+const setMessage = (id, newClass, msg) => {
+    const errorTag = document.getElementById(id);
+    errorTag.className = newClass;
+    errorTag.textContent = msg;
 };
 
+const setError = (msg) => setMessage('error', 'upload__error', msg);
+const removeError = (msg) => setMessage('error', 'upload__error--invisible', msg);
+const setSuccess = (msg) => setMessage('success', 'upload__success', 'Data uploaded successfully!');
+
 const handleFileUpload = (e) => {
+    removeError();
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsText(file, 'UTF-8');
@@ -17,13 +22,30 @@ const handleFileUpload = (e) => {
             skipEmptyLines: true,
             complete: (r) => {
                 const csv = r.data.slice(0,2); // we can only handle two rows
-                if (csv[0].length !== csv[1].length) {
-                    setError('Your data series are not the same length. Plese check your data and try again.');
+
+                // scan csv data for problems
+                const lengthDifference = csv[0].length !== csv[1].length;
+                if (lengthDifference) {
+                    setError('Error: Your data series are not the same length. Plese check your data and try again.');
+                    return;
                 }
+
+                const verifyBody = (data) => {
+                    const allNumbers = data.map((el) => {
+                        el = Number(el);
+                        if (isNaN(el)) {
+                            const numberError = 'All non-title data points must be numbers';
+                            setError(numberError);
+                            throw new Error(numberError);
+                        }
+
+                        return el;
+                    });
+                };
 
                 // package data for API
                 const requestBody = csv.reduce((acc, val, i) => {
-                    const bodyData = val.slice(1);
+                    const bodyData = verifyBody(val.slice(1));
                     const key = i === 0 ? 'dep' : 'ind';
                     acc[key] = bodyData;
                     return acc;
@@ -40,6 +62,7 @@ const handleFileUpload = (e) => {
                 state.chartData = chartData;
                 state.seriesNames = seriesNames;
                 document.getElementById('submit-btn').disabled = false;
+                setSuccess();
             }
         });
     };
@@ -51,7 +74,7 @@ const handleFileUpload = (e) => {
 
 const handleDataSubmission = (e) => {
     if (!state.requestBody) {
-        setError('Plese upload a file');
+        setError('Please upload a file');
     } else {
         fetch('/regress', {
             method: 'POST',

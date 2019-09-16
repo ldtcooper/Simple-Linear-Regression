@@ -1,3 +1,7 @@
-.upload__error--invisible {
+p[class$="--invisible"] {
     display: none;
+}
+
+.upload__error {
+    color: red;
 }
