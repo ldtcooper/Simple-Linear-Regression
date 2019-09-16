@@ -59,6 +59,16 @@ const handleDataSubmission = (e) => {
             headers: {
                 'Content-Type': 'application/json',
             },
+        }).then((r) => {
+            if (r.ok) {
+                r.json().then((json) => {
+                    state.regressionLine = json;
+                });
+            } else if (r.status === 400) {
+                setError('It appears that you have uploaded some invalid data. Please double-check your data and try again');
+            } else {
+                setError('An API error occured. Please try again later.');
+            }
         });
     }
 };
