@@ -3,17 +3,29 @@
     <head>
         <meta charset="utf-8">
         <title>Regression API</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
         <link rel="stylesheet" href="./styles.css">
         <script type="text/javascript" src="./index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
         <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://kit.fontawesome.com/9ac0c152de.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <header>
+            <h1>Linear Regression API</h1>
+            <div class="header__contact">
+                <a href="https://github.com/ldtcooper">
+                    <i class="fab fa-github-square"></i>
+                    <span class="header__contact-link--accessible">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/ldtcooper/">
+                    <i class="fab fa-linkedin"></i>
+                    <span class="header__contact-link--accessible">LinkedIn</span>
+                </a>
+            </div>
+        </header>
         <main>
-            <header>
-                <h1>Linear Regression API</h1>
-            </header>
             <section>
                 <h2>What is this?</h2>
                 <p>
@@ -35,12 +47,12 @@
                 </p>
             </section>
             <div class="upload">
-                <p id="error" class="upload__error--invisible"></p>
-                <p id="success" class="upload__success--invisible"></p>
                 <div class="upload__input">
                     <label for="#file-upload">Upload your file here:</label>
                     <input id="file-upload" type="file" name="CSV Upload" accept=".csv, .tsv">
-                    <button id="submit-btn" type="button" name="upload" disabled>
+                    <p id="error" class="upload__error--invisible"></p>
+                    <p id="success" class="upload__success--invisible"></p>
+                    <button id="submit-btn" class="upload__button" type="button" name="upload" disabled>
                         Upload Data
                     </button>
                 </div>
