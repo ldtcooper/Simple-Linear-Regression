@@ -24,5 +24,9 @@ def send_regression():
             print(e)
             return abort(400, 'INVALID_INPUT')
 
+@app.route("/sample-data", methods = ['GET'])
+def get_data():
+    return app.send_static_file('pearson-data.csv')
+
 if __name__ == "__main__":
     app.run()
