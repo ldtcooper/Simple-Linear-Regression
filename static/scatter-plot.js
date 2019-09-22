@@ -22,8 +22,16 @@ function scatterPlot(data, regressionLine, seriesNames) {
         .append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-    xScale.domain([d3.min(data, getX) - 1, d3.max(data, getX) + 1]);
+    const xMax = d3.max(data, getX);
+    xScale.domain([d3.min(data, getX) - 1, xMax + 1]);
     yScale.domain([d3.min(data, getY) - 1, d3.max(data, getY) + 1]);
+
+    const regressionPoints = {
+        x1: xScale(margin.right),
+        x2: xScale(xMax),
+        y1: yScale(regressionLine.intercept),
+        y2: yScale((xMax * regressionLine.slope) + regressionLine.intercept),
+    };
 
     svg.append('g')
         .attr('class', 'x axis')
@@ -46,31 +54,45 @@ function scatterPlot(data, regressionLine, seriesNames) {
         .style('text-anchor', 'end')
         .text(seriesNames.y);
 
-    svg.selectAll(".dot")
+    svg.append('g')
+        .attr('class', 'dots')
+        .selectAll('.dot')
         .data(data)
-        .enter().append("circle")
-        .attr("class", "dot")
-        .attr("r", 3.5)
-        .attr("cx", posX)
-        .attr("cy", posY)
-        .style("fill", midEastRed);
+        .enter()
+        .append('circle')
+        .attr('class', 'dot')
+        .attr('r', 3.5)
+        .attr('cx', posX)
+        .attr('cy', posY)
+        .style('fill', midEastRed)
+        .style('stroke', 'black')
+        .style('stroke-width', 1);
 
-    // svg.select('.reg-line')
-    //     .data()
+    svg.append('g')
+        .attr('class', 'line')
+        .append('line')
+        .datum(data)
+        .attr('class', 'reg-line')
+        .attr('x1', regressionPoints.x1)
+        .attr('x2', regressionPoints.x2)
+        .attr('y1', regressionPoints.y1)
+        .attr('y2', regressionPoints.y2)
+        .attr('stroke', 'red')
+        .attr('stroke-width', 2);
 
 
-        // .on("mouseover", function(d) {
+        // .on('mouseover', function(d) {
         //     tooltip.transition()
         //          .duration(200)
-        //          .style("opacity", .9);
-        //     tooltip.html(d["Cereal Name"] + "<br/> (" + xValue(d)
-  	    //     + ", " + yValue(d) + ")")
-        //          .style("left", (d3.event.pageX + 5) + "px")
-        //          .style("top", (d3.event.pageY - 28) + "px");
+        //          .style('opacity', .9);
+        //     tooltip.html(d['Cereal Name'] + '<br/> (' + xValue(d)
+  	    //     + ', ' + yValue(d) + ')')
+        //          .style('left', (d3.event.pageX + 5) + 'px')
+        //          .style('top', (d3.event.pageY - 28) + 'px');
         // })
-        // .on("mouseout", function(d) {
+        // .on('mouseout', function(d) {
         //     tooltip.transition()
         //          .duration(500)
-        //          .style("opacity", 0);
+        //          .style('opacity', 0);
         // });
 }
