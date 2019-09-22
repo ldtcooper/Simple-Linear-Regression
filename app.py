@@ -26,7 +26,7 @@ def send_regression():
 
 @app.route("/sample-data", methods = ['GET'])
 def get_data():
-    return app.send_static_file('pearson-data.csv')
+    return app.send_static_file('sample-data.csv')
 
 if __name__ == "__main__":
     app.run()
