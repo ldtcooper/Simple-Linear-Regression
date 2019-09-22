@@ -85,10 +85,11 @@ dd {
 }
 
 .results__tooltip {
-  position: absolute;
-  width: 200px;
-  height: 28px;
-  pointer-events: none;
+    background-color: lightgrey;
+    position: absolute;
+    height: 2.2rem;
+    padding: 0.25rem;
+    pointer-events: none;
 }
 
 .axis {

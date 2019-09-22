@@ -10,7 +10,6 @@ def homepage():
 @app.route("/regress", methods = ['POST'])
 def send_regression():
     arguments = request.get_json()
-    print(arguments)
     dependent_var = arguments['dep']
     independent_var = arguments['ind']
     different_data_lengths = len(dependent_var) != len(independent_var)
@@ -23,6 +22,10 @@ def send_regression():
         except Exception as e:
             print(e)
             return abort(400, 'INVALID_INPUT')
+
+@app.route("/sample-data", methods = ['GET'])
+def get_data():
+    return app.send_static_file('sample-data.csv')
 
 if __name__ == "__main__":
     app.run()
