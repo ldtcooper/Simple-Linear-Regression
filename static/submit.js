@@ -60,8 +60,9 @@ const handleFileUpload = (e) => {
                 }, {});
 
                 // package data for chart
+                const yData = csv[1].slice(1);
                 const chartData = csv[0].slice(1).map((x, i) => {
-                    const y = csv[1][i];
+                    const y = yData[i];
                     return { x, y };
                 });
                 const seriesNames = { x: csv[0][0], y: csv[1][0] };
@@ -92,9 +93,9 @@ const handleDataSubmission = (e) => {
             },
         }).then((r) => {
             if (r.ok) {
-                r.json().then((json) => {
-                    state.regressionLine = json;
-                    setValues(json);
+                r.json().then((regressionLine) => {
+                    setValues(regressionLine);
+                    scatterPlot(state.chartData, regressionLine, state.seriesNames);
                 });
             } else if (r.status === 400) {
                 setError('It appears that you have uploaded some invalid data. Please double-check your data and try again');

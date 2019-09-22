@@ -32,9 +32,9 @@ glucose,99,65,79,75,87,81
 The convention here is for the top row to be the dependent variable and for the bottom to be the independent variable. If any more rows are uploaded, they will be ignored. Uploading a dataset in which the rows are different lengths will trigger an error.
 
 ## Todos
-- [ ] Convert existing JavaScript to TypeScript
 - [ ] Further regression stats (R-Squared, p-values)
-- [ ] D3 scatter plot with regression line on CSV upload
+- [x] D3 scatter plot with regression line on CSV upload
 - [ ] Unit tests for `/regress` route
 - [ ] Unit tests for frontend (`verifyBody`, `requestBody`, etc.)
 - [ ] End to end test with headless browser
+- [ ] Download sample data
