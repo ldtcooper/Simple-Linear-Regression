@@ -6,12 +6,15 @@ function scatterPlot(data, regressionLine, seriesNames) {
 
     const xScale = d3.scaleLinear().range([0, width]);
     const xAxis = d3.axisBottom(xScale);
-    const yScale = d3.scaleLinear().range([0, height]);
+    const yScale = d3.scaleLinear().range([height, 0]);
     const yAxis = d3.axisLeft(yScale);
     const getX = (d) => d.x;
     const getY = (d) => d.y;
+    const posX = (d) => xScale(getX(d));
+    const posY = (d) => yScale(getY(d));
 
     const midEastRed = '#EABA6B';
+    const spiro = '#2DC7FF';
 
     var svg = d3.select('#regression-plot')
         .attr('width', width + margin.left + margin.right)
@@ -40,18 +43,22 @@ function scatterPlot(data, regressionLine, seriesNames) {
         .attr('class', 'label')
         .attr('transform', 'rotate(-90)')
         .attr('y', 6)
-        .attr('dy', '.71em')
         .style('text-anchor', 'end')
         .text(seriesNames.y);
 
-        svg.selectAll(".dot")
+    svg.selectAll(".dot")
         .data(data)
         .enter().append("circle")
         .attr("class", "dot")
         .attr("r", 3.5)
-        .attr("cx", getX)
-        .attr("cy", getY)
+        .attr("cx", posX)
+        .attr("cy", posY)
         .style("fill", midEastRed);
+
+    // svg.select('.reg-line')
+    //     .data()
+
+
         // .on("mouseover", function(d) {
         //     tooltip.transition()
         //          .duration(200)
