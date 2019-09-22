@@ -93,11 +93,10 @@ const handleDataSubmission = (e) => {
             },
         }).then((r) => {
             if (r.ok) {
-                r.json().then((json) => {
-                    state.regressionLine = json;
-                    setValues(json);
+                r.json().then((regressionLine) => {
+                    setValues(regressionLine);
                     console.log(state);
-                    scatterPlot();
+                    scatterPlot(state.chartData, regressionLine, state.seriesNames);
                 });
             } else if (r.status === 400) {
                 setError('It appears that you have uploaded some invalid data. Please double-check your data and try again');
