@@ -85,10 +85,10 @@ dd {
 }
 
 .results__tooltip {
-    background-color: grey;
+    background-color: lightgrey;
     position: absolute;
-    width: 200px;
-    height: 28px;
+    height: 2.2rem;
+    padding: 0.25rem;
     pointer-events: none;
 }
 
