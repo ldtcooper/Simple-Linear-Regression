@@ -10,7 +10,6 @@ def homepage():
 @app.route("/regress", methods = ['POST'])
 def send_regression():
     arguments = request.get_json()
-    print(arguments)
     dependent_var = arguments['dep']
     independent_var = arguments['ind']
     different_data_lengths = len(dependent_var) != len(independent_var)

@@ -27,7 +27,7 @@ const handleFileUpload = (e) => {
             skipEmptyLines: true,
             complete: (r) => {
                 const csv = r.data.slice(0,2); // we can only handle two rows
-
+                debugger;
                 // scan csv data for problems
                 const lengthDifference = csv[0].length !== csv[1].length;
                 if (lengthDifference) {
