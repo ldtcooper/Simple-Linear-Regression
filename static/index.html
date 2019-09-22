@@ -47,17 +47,6 @@
                     Uploading the above data will tell you the correlation between age and glucose levels absent any other factors.
                 </p>
             </section>
-            <div class="upload">
-                <div class="upload__input">
-                    <label for="#file-upload">Upload your file here:</label>
-                    <input id="file-upload" type="file" name="CSV Upload" accept=".csv, .tsv">
-                    <p id="error" class="upload__error--invisible"></p>
-                    <p id="success" class="upload__success--invisible"></p>
-                    <button id="submit-btn" class="upload__button" type="button" name="upload" disabled>
-                        Upload Data
-                    </button>
-                </div>
-            </div>
             <div class="results">
                 <dl id="values" class="results__regression-values--invisible">
                     <div class="results__dl-element-wrapper">
@@ -69,7 +58,18 @@
                         <dd id="constant"></dd>
                     </div>
                 </dl>
-                <svg id="regression-plot" class="results__chart"></svg>
+                <svg id="regression-plot" class="results__chart--invisible"></svg>
+            </div>
+            <div class="upload">
+                <div class="upload__input">
+                    <label for="#file-upload">Upload your file here:</label>
+                    <input id="file-upload" type="file" name="CSV Upload" accept=".csv, .tsv">
+                    <p id="error" class="upload__error--invisible"></p>
+                    <p id="success" class="upload__success--invisible"></p>
+                    <button id="submit-btn" class="upload__button" type="button" name="upload" disabled>
+                        Upload Data
+                    </button>
+                </div>
             </div>
         </main>
     </body>

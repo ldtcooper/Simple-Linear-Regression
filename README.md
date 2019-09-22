@@ -33,7 +33,8 @@ The convention here is for the top row to be the dependent variable and for the 
 
 ## Todos
 - [ ] Further regression stats (R-Squared, p-values)
-- [ ] D3 scatter plot with regression line on CSV upload
+- [x] D3 scatter plot with regression line on CSV upload
 - [ ] Unit tests for `/regress` route
 - [ ] Unit tests for frontend (`verifyBody`, `requestBody`, etc.)
 - [ ] End to end test with headless browser
+- [ ] Download sample data

@@ -95,7 +95,6 @@ const handleDataSubmission = (e) => {
             if (r.ok) {
                 r.json().then((regressionLine) => {
                     setValues(regressionLine);
-                    console.log(state);
                     scatterPlot(state.chartData, regressionLine, state.seriesNames);
                 });
             } else if (r.status === 400) {
