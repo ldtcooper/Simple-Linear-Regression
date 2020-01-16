@@ -1,6 +1,6 @@
 # README
 
-This project is a simple API which takes in two data series, a dependent variable and an independent variable, and performs a linear regression on the data to determine the correlation between them.
+This project is a simple API which takes in two data series, a dependent variable and an independent variable, and performs a linear regression on the data to determine the correlation between them. You can play around with the project [here](http://flask-env.wv33p8mp63.us-west-1.elasticbeanstalk.com/).
 
 ## API Usage
 This project leans primarily on the `/regress` route. It accepts a `POST` request with a body consisting of two arrays of numbers, an independent variable and a dependent variable.

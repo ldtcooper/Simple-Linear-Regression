@@ -1,13 +1,13 @@
 from flask import Flask, request, abort, url_for, redirect
 from regression import regress
 
-app = Flask(__name__, static_url_path = '')
+application = Flask(__name__, static_url_path = '')
 
-@app.route("/", methods = ['GET'])
+@application.route("/", methods = ['GET'])
 def homepage():
-    return app.send_static_file('index.html')
+    return application.send_static_file('index.html')
 
-@app.route("/regress", methods = ['POST'])
+@application.route("/regress", methods = ['POST'])
 def send_regression():
     arguments = request.get_json()
     dependent_var = arguments['dep']
@@ -23,9 +23,9 @@ def send_regression():
             print(e)
             return abort(400, 'INVALID_INPUT')
 
-@app.route("/sample-data", methods = ['GET'])
+@application.route("/sample-data", methods = ['GET'])
 def get_data():
-    return app.send_static_file('sample-data.csv')
+    return application.send_static_file('sample-data.csv')
 
 if __name__ == "__main__":
-    app.run()
+    application.run()
