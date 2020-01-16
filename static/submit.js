@@ -7,8 +7,9 @@ const setMessage = (id, newClass, msg) => {
 };
 
 const setError = (msg) => setMessage('error', 'upload__error', msg);
-const removeError = (msg) => setMessage('error', 'upload__error--invisible', msg);
+const removeError = () => setMessage('error', 'upload__error--invisible', '');
 const setSuccess = (msg) => setMessage('success', 'upload__success', 'Data uploaded successfully!');
+const removeSuccess = () => setMessage('success', 'upload__success', '');
 const setValues = ({ slope, intercept }) => {
     document.getElementById('coefficient').textContent = slope;
     document.getElementById('constant').textContent = intercept;
@@ -27,11 +28,11 @@ const handleFileUpload = (e) => {
             skipEmptyLines: true,
             complete: (r) => {
                 const csv = r.data.slice(0,2); // we can only handle two rows
-                debugger;
                 // scan csv data for problems
                 const lengthDifference = csv[0].length !== csv[1].length;
                 if (lengthDifference) {
                     setError('Error: Your data series are not the same length. Plese check your data and try again.');
+                    document.getElementById('submit-btn').disabled = true;
                     return;
                 }
 
@@ -41,6 +42,7 @@ const handleFileUpload = (e) => {
                         if (isNaN(el)) {
                             const numberError = 'All non-title data points must be numbers';
                             setError(numberError);
+                            document.getElementById('submit-btn').disabled = true;
                             document.getElementById('file-upload').value = '';
                             throw new Error(numberError);
                         }
@@ -82,6 +84,8 @@ const handleFileUpload = (e) => {
 };
 
 const handleDataSubmission = (e) => {
+    removeSuccess();
+    removeError();
     if (!state.requestBody) {
         setError('Please upload a file');
     } else {
