@@ -1,6 +1,6 @@
 # README
 
-This project is a simple API which takes in two data series, a dependent variable and an independent variable, and performs a linear regression on the data to determine the correlation between them.
+This project is a simple API which takes in two data series, a dependent variable and an independent variable, and performs a linear regression on the data to determine the correlation between them. You can play around with the project [here](http://flask-env.wv33p8mp63.us-west-1.elasticbeanstalk.com/).
 
 ## API Usage
 This project leans primarily on the `/regress` route. It accepts a `POST` request with a body consisting of two arrays of numbers, an independent variable and a dependent variable.
@@ -30,6 +30,9 @@ glucose,99,65,79,75,87,81
 ```
 
 The convention here is for the top row to be the dependent variable and for the bottom to be the independent variable. If any more rows are uploaded, they will be ignored. Uploading a dataset in which the rows are different lengths will trigger an error.
+
+## Running Locally
+The easiest way to run this locally is with the `run.sh` script included. Just type `sh run.sh` into the terminal and the app should start up on `localhost:5000`.
 
 ## Todos
 - [ ] Further regression stats (R-Squared, p-values)
