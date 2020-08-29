@@ -89,7 +89,7 @@ const handleDataSubmission = (e) => {
     if (!state.requestBody) {
         setError('Please upload a file');
     } else {
-        fetch('/regress', {
+        fetch('https://nxalqwxrnh.execute-api.us-west-1.amazonaws.com/Prod/regress', {
             method: 'POST',
             body: JSON.stringify(state.requestBody),
             headers: {
