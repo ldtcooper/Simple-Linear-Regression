@@ -19,3 +19,6 @@ class TestRegress(unittest.TestCase):
 if __name__ == '__main__':
     print('Unit Testing Regression Equation')
     unittest.main()
+
+
+# Sample request: {"ind": [43, 21, 25, 42, 57, 59],"dep": [99, 65, 79, 75, 87, 81]}
