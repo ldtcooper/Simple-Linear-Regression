@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143781214-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-143781214-1');
+        </script>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Serverless simple linear regression API service for CSV and TSV data built on AWS Lambda">
         <title>Regression API</title>
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -44,7 +55,7 @@
                     glucose,99,65,79,75,87,81
                 </code>
                 <p>
-                    Uploading the above data will tell you the correlation between age and glucose levels absent any other factors. If you don't have some CSV data handy, you can download some sample data <a href="sample-data.csv" target="_blank" download>here</a>. It's a CSV of the (truncated) results of Karl Pearson's 1903 experiment comparing the heights of fathers to the heights of their sons. Original data to be found <a target="_blank" href="https://www.kaggle.com/abhilash04/fathersandsonheight#Pearson.txt">on Kaggle</a>.
+                    Uploading the above data will tell you the correlation between age and glucose levels absent any other factors. If you don't have some CSV data handy, <a href="sample-data.csv" target="_blank" download>you can download some sample data here</a>. It's a CSV of the (truncated) results of Karl Pearson's 1903 experiment comparing the heights of fathers to the heights of their sons. Original data to be found <a target="_blank" href="https://www.kaggle.com/abhilash04/fathersandsonheight#Pearson.txt">on Kaggle</a>.
                 </p>
             </section>
             <div class="results">
@@ -62,7 +73,7 @@
             </div>
             <div class="upload">
                 <div class="upload__input">
-                    <label for="#file-upload">Upload your file here:</label>
+                    <label for="file-upload">Upload your file here:</label>
                     <input id="file-upload" type="file" name="CSV Upload" accept=".csv, .tsv">
                     <p id="error" class="upload__error--invisible"></p>
                     <p id="success" class="upload__success--invisible"></p>
