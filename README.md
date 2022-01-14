@@ -1,6 +1,6 @@
 # README
 
-This project is a simple API which takes in two data series, a dependent variable and an independent variable, and performs a linear regression on the data to determine the correlation between them. You can play around with the project [here](http://flask-env.wv33p8mp63.us-west-1.elasticbeanstalk.com/).
+This project is a simple API which takes in two data series, a dependent variable and an independent variable, and performs a linear regression on the data to determine the correlation between them. You can play around with the project [here](https://www.logan-cooper.com/Simple-Linear-Regression/).
 
 While the frontend is hosted on GitHub pages within my personal website, the API itself is an AWS Lambda function accessed through API Gateway.
 
